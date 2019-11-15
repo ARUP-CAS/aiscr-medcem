@@ -1,0 +1,16 @@
+
+# sensitive data (except example files)
+instance/*
+!instance/example_*
+
+# cache
+__pycache__/*
+
+# compiled files
+*.pyc
+
+# created files
+thanados/static/images/entities/*
+
+# ide
+.idea

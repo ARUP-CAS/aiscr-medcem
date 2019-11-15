@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>MEDCEM</title>
+
+    <link rel="icon" href="/static/favicon.ico">
+    <link href="/static/vendor/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/vendor/leaflet/leaflet.css" rel="stylesheet"/>
+    <script src="/static/vendor/leaflet/leaflet.js"></script>
+    <script src="/static/vendor/leafletplugins/leaflet-providers-master/leaflet-providers.js"></script>
+    <script src="/static/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/static/vendor/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link href="/static/vendor/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+    <script src="/static/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <link href="/static/css/style.css" rel="stylesheet">
+    <link href="/static/vendor/fontawesome-free-5.7.2-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/vendor/vakata-jstree-bc5187e/dist/themes/default/style.min.css"/>
+    <script src="/static/vendor/vakata-jstree-bc5187e/dist/jstree.min.js"></script>
+    <link rel="stylesheet" href="/static/vendor/leafletplugins/Leaflet.EasyButton-master/src/easy-button.css"/>
+    <script src="/static/vendor/leafletplugins/Leaflet.EasyButton-master/src/easy-button.js"></script>
+    <script src="/static/vendor/leaflet-choropleth/dist/choropleth.js"></script>
+    <link href="/static/vendor/featherlight/featherlight.css" rel="stylesheet"/>
+    <script src="/static/vendor/featherlight/featherlight.js"></script>
+    <script src="/static/js/globalfunctions.js"></script>
+    <link href="/static/vendor/leafletplugins/Leaflet-MiniMap-master/src/Control.MiniMap.css" type="text/css"
+          rel="stylesheet"/>
+    <script src="/static/vendor/leafletplugins/Leaflet-MiniMap-master/dist/Control.MiniMap.min.js"
+    ></script>
+    <script src="/static/vendor/jquery-validation-1.15.0/jquery.validate.min.js"
+    ></script>
+
+
+</head>
+<body>
+
+<nav id="mynavbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+    <div class="container-fluid" style="padding-left: 0px">
+        <a class="navbar-brand" href="/">
+            <img src="/static/images/icons/logo.png" height="30" alt="" title="Home">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                {#% if current_user.is_authenticated %#}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('sites') }}">Sites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('charts') }}">Charts</a>
+                </li>
+                <li class="nav-item" style="margin-right: 2em">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('manual') }}"><i title="Help/Manual"
+                                                                          class="fas fa-question"></i></a>
+                </li>
+                <!-- <li class="nav-item">
+                     <a class="nav-link" href="/logout">Logout</a>
+                 </li>-->
+                {#% else %#}
+                <!--<li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>-->
+                {#% endif %#}
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="modal fade" id="HelpModal" tabindex="-1" role="dialog"
+     aria-labelledby="How to use this" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="HelpModalLabel">How to use this:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="helptext">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
