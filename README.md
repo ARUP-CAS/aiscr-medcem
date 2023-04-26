@@ -2,7 +2,7 @@
 
 MEDCEM is an open source, web application for the presentation of archaeological data especially for burial studies.
 
-It is a further developed as a separate [branch](https://github.com/stefaneichert/thanados/tree/medcem) of the [THANADOS](https://thanados.net) project and based on [OpenAtlas](https://openatlas.eu) data.
+It is a further developed as (https://github.com/stefaneichert/thanados) project and based on [OpenAtlas](https://openatlas.eu) data.
 
 The information is mapped as a network using classes and properties of the [CIDOC CRM](http://www.cidoc-crm.org/).
 
